@@ -25,7 +25,7 @@ export default function Head() {
       <meta name="apple-touch-fullscreen" content="yes" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-title" content="PStore" />
-      <meta name="theme-color" content="#072523" />
+      <meta name="theme-color" content="#000F2A" />
       <link rel="apple-touch-startup-image" href="./src/assets/apple-splash-2048-2732.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
       <link rel="apple-touch-startup-image" href="./src/assets/apple-splash-1668-2388.jpg" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
       <link rel="apple-touch-startup-image" href="./src/assets/apple-splash-1536-2048.jpg" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
@@ -46,17 +46,17 @@ export default function Head() {
       <meta name="keywords" content="PlayStation, PlayStation4, PlayStation 5, ofertas en playstation, próximos juegos de PlayStation, nuevos juegos en PlayStation, nuevos juegos, videojuegos, catálogo de juegos de PlayStation, próximos juegos de PlayStation, nuevos juegos en PlayStation, nuevos juegos, videojuegos" />
 
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://fresh.xstoregames.com" />
+      <meta property="og:url" content="https://pstoregames.deno.dev" />
       <meta property="og:title" content="PStore: La tienda argenta de PlayStation" />
       <meta property="og:description" content="Explora la amplia colección de títulos de videojuegos en el catálogo de juegos de PlayStation. Busca los éxitos de taquilla favoritos, las ofertas y nuevos lanzamientos en precios argentinos." />
-      <meta property="og:image" content="https://fresh.xstoregames.com/src/assets/xstore-og.jpg" />
+      <meta property="og:image" content="https://pstoregames.deno.dev/src/assets/pstore-og.jpg" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta property="twitter:domain" content="fresh.xstoregames.com" />
-      <meta property="twitter:url" content="https://fresh.xstoregames.com" />
+      <meta property="twitter:url" content="https://pstoregames.deno.dev" />
       <meta name="twitter:title" content="PStore: La tienda argenta de PlayStation" />
       <meta name="twitter:description" content="Explora la amplia colección de títulos de videojuegos en el catálogo de juegos de PlayStation. Busca los éxitos de taquilla favoritos, las ofertas y nuevos lanzamientos en precios argentinos." />
-      <meta name="twitter:image" content="https://fresh.xstoregames.com/src/assets/xstore-og.jpg" />
+      <meta name="twitter:image" content="https://pstoregames.deno.dev/src/assets/pstore-og.jpg" />
 
       <link rel="manifest" href={Fresh.asset("/manifest.json")} />
     </Fresh.Head>

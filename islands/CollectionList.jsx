@@ -4,9 +4,8 @@ import { useEffect, useRef } from 'preact/hooks';
 import { useSignal } from '@preact/signals';
 import GameCard from '@/components/GameCard.jsx';
 
-const LIMIT = 10;
-
 export default function CollectionList({ type, games }) {
+  const LIMIT = 10;
   const $collection = useRef(null);
   const gamesCollection = useSignal(games);
   const skip = useSignal(LIMIT);
