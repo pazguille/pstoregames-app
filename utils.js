@@ -1,8 +1,8 @@
-export const getPsURL = (list, skipitems = 0) => `http://localhost:3031/api/games?list=${list}&skipitems=${skipitems}`;
-export const searchPsURL = (query) => `http://localhost:3031/api/search?q=${query}`;
-export const gamePsURL = (id) => `http://localhost:3031/api/games?id=${id}`;
-export const getPsNewsURL = () => `http://localhost:3031/api/news`;
-export const getVideoURL = (slug) => `http://localhost:3031/api/videos?game=${slug}`;
+export const getPsURL = (list, skipitems = 0) => `https://ps-games-api.vercel.app/api/games?list=${list}&skipitems=${skipitems}`;
+export const searchPsURL = (query) => `https://ps-games-api.vercel.app/api/search?q=${query}`;
+export const gamePsURL = (id) => `https://ps-games-api.vercel.app/api/games?id=${id}`;
+export const getPsNewsURL = () => `https://ps-games-api.vercel.app/api/news`;
+export const getVideoURL = (slug) => `https://ps-games-api.vercel.app/api/videos?game=${slug}`;
 
 export function slugify(str) {
   return str
