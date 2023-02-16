@@ -1,5 +1,5 @@
 import { useEffect } from 'preact/hooks';
-import { useSignal } from '@preact/signals';
+import { useSignal, effect } from '@preact/signals';
 import { gamePsURL } from '@/utils.js';
 import GameCard from '@/components/GameCard.jsx';
 
@@ -22,14 +22,27 @@ export default function Wishlist() {
   useEffect(async () => {
     const wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
     if (wishlist && wishlist.length > 0) {
-      const games = Array.from(wishlist).reverse().join(',');
-      const data = await fetch(gamePsURL(games)).then(res => res.json());
+      const map = new Map();
+      const games = wishlist.reverse();
+
+      await Promise.all(games.map((gameId) => {
+        return fetch(gamePsURL(gameId))
+          .then(res => res.json())
+          .then(res => map.set(gameId, res));
+      }));
+
+      const data = wishlist.map((id) => map.get(id));
       if (data) {
         wishCollection.value = data;
       }
     }
-    loading.value = false;
   }, []);
+
+  effect(() => {
+    if (wishCollection.value.length > 0) {
+      loading.value = false;
+    }
+  });
 
   return (
     <div>

@@ -4,6 +4,7 @@ import { asset } from '$fresh/runtime.ts';
 import Layout from '@/components/Layout.jsx';
 import GameImportant from '@/components/GameImportant.jsx';
 import Section from '@/components/Section.jsx';
+import SectionWithIsland from '@/components/SectionWithIsland.jsx';
 
 export const handler = {
   async GET(req, ctx) {
@@ -28,6 +29,9 @@ export const handler = {
         icon: '',
         list: [],
       },
+    ];
+
+    const belowTheFold = [
       {
         type: 'best',
         title: 'Deberías jugarlos',
@@ -84,22 +88,26 @@ export const handler = {
 
     const lcp = hotsale.images.master.url;
 
-    return ctx.render({ aboveTheFold, hotsale, lcp: lcp + '?w=720' });
+    return ctx.render({ aboveTheFold, belowTheFold, hotsale, lcp: lcp + '?w=720' });
   },
 };
 
 export default function Home(ctx) {
-  const { lcp, hotsale, aboveTheFold } = ctx.data;
+  const { lcp, hotsale, aboveTheFold, belowTheFold } = ctx.data;
 
   return (
     <Layout section="">
       <Head>
         <link rel="preload" as="image" href={lcp} fetchpriority="high" />
 
-        {/* <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=free&skipitems=0" crossorigin="anonymous" />
-        <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=most&skipitems=0" crossorigin="anonymous" />
-        <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=best&skipitems=0" crossorigin="anonymous" />
-        <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=coming&skipitems=0" crossorigin="anonymous" /> */}
+        <link rel="preload" as="fetch" href="https://ps-games-api.fly.dev/api/games?list=best&skipitems=0" crossorigin="anonymous" />
+        <link rel="preload" as="fetch" href="https://ps-games-api.fly.dev/api/games?list=indies&skipitems=0" crossorigin="anonymous" />
+        <link rel="preload" as="fetch" href="https://ps-games-api.fly.dev/api/games?list=free&skipitems=0" crossorigin="anonymous" />
+        <link rel="preload" as="fetch" href="https://ps-games-api.fly.dev/api/games?list=vr&skipitems=0" crossorigin="anonymous" />
+        <link rel="preload" as="fetch" href="https://ps-games-api.fly.dev/api/games?list=ps5&skipitems=0" crossorigin="anonymous" />
+        <link rel="preload" as="fetch" href="https://ps-games-api.fly.dev/api/games?list=ps4&skipitems=0" crossorigin="anonymous" />
+        <link rel="preload" as="fetch" href="https://ps-games-api.fly.dev/api/games?list=demos&skipitems=0" crossorigin="anonymous" />
+        <link rel="preload" as="fetch" href="https://www.dolarsi.com/api/api.php?type=valoresprincipales" crossorigin="anonymous" />
       </Head>
       <div className="home">
         <notification-prompt hidden></notification-prompt>
@@ -109,11 +117,11 @@ export default function Home(ctx) {
           <Section section={section} key={section.type} />
         )}
 
-        {/* {
+        {
           belowTheFold.map((section, index) =>
             <SectionWithIsland section={section} key={section.type} />
           )
-        } */}
+        }
       </div>
 
       <script dangerouslySetInnerHTML={{ __html:`

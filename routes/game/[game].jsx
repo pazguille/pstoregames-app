@@ -13,7 +13,7 @@ export const handler = {
 
     const game = await fetch(gamePsURL(gameId)).then(res => res.json())
 
-    const lcp = game.images.master.url;
+    const lcp = game.images.gamehub_cover_art.url;
 
     return ctx.render({ game, lcp });
   },

@@ -1,7 +1,6 @@
 const cacheName = 'cache-v1';
 const precacheResources = [
   '/',
-  '/src/styles.css',
   '/manifest.json',
   'src/assets/favicon.png',
   '/src/assets/screenshots-1.jpg',
@@ -11,29 +10,9 @@ const precacheResources = [
   '/src/assets/manifest-icon-192.maskable.png',
 
   '/src/assets/logo.svg',
-  '/src/assets/icons/tag.svg',
-  '/src/assets/game-pass.svg',
-  '/src/assets/ea-play.png',
-  '/src/assets/icons/chart.svg',
-  '/src/assets/icons/play.svg',
-  '/src/assets/icons/news.svg',
-  '/src/assets/icons/heart.svg',
 
-  '/src/js/web-components.js',
-  '/src/js/utils.js',
-  '/src/js/templates.js',
-  '/src/js/app.js',
-  '/src/js/swipes.js',
-
-  '/src/assets/bahnschrift.woff2',
+  '/src/assets/SST-Roman-latin.woff2',
   'https://fonts.gstatic.com/s/inter/v7/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7W0Q5nw.woff2',
-
-  'https://api.xstoregames.com/api/games?list=new&skipitems=0',
-  'https://api.xstoregames.com/api/games?list=deals&skipitems=0',
-  'https://api.xstoregames.com/api/games?list=coming&skipitems=0',
-  'https://api.xstoregames.com/api/games?list=best&skipitems=0',
-  'https://api.xstoregames.com/api/games?list=most&skipitems=0',
-  'https://api.xstoregames.com/api/games?list=free&skipitems=0',
 ];
 
 this.addEventListener('install', async (eve) => {
@@ -85,7 +64,7 @@ this.addEventListener('notificationclick', eve => {
   );
 });
 
-const gamePsURL = (id) => `https://api.xstoregames.com/api/games?id=${id}`;
+const gamePsURL = (id) => `https://ps-games-api.fly.dev/api/games?id=${id}`;
 function slugify(str) {
   return str
     .toString()
