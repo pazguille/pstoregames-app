@@ -1,8 +1,11 @@
-export const getPsURL = (list, skipitems = 0) => `https://ps-games-api.vercel.app/api/games?list=${list}&skipitems=${skipitems}`;
-export const searchPsURL = (query) => `https://ps-games-api.vercel.app/api/search?q=${query}`;
-export const gamePsURL = (id) => `https://ps-games-api.vercel.app/api/games?id=${id}`;
-export const getPsNewsURL = () => `https://ps-games-api.vercel.app/api/news`;
-export const getVideoURL = (slug) => `https://ps-games-api.vercel.app/api/videos?game=${slug}`;
+const API_URI = 'https://ps-games-api.fly.dev';
+// const API_URI = 'http://localhost:3031';
+
+export const getPsURL = (list, skipitems = 0) => `${API_URI}/api/games?list=${list}&skipitems=${skipitems}`;
+export const searchPsURL = (query) => `${API_URI}/api/search?q=${query}`;
+export const gamePsURL = (id) => `${API_URI}/api/games?id=${id}`;
+export const getPsNewsURL = () => `${API_URI}/api/news`;
+export const getVideoURL = (slug) => `${API_URI}/api/videos?game=${slug}`;
 
 export function slugify(str) {
   return str
@@ -17,10 +20,16 @@ export function slugify(str) {
 }
 
 async function updateDollar() {
-  return await fetch('https://www.dolarsi.com/api/api.php?type=valoresprincipales')
+  return fetch('https://www.dolarsi.com/api/api.php?type=valoresprincipales')
   .then(res => res.json())
   .then(data => {
     return parseFloat(data[0].casa.compra.replace(',', '.'));
+  });
+}
+
+export function getDollar() {
+  updateDollar().then(data => {
+    dollar = data;
   });
 }
 
@@ -30,11 +39,6 @@ const AFIP = 0.45;
 const PAISA = 0.08;
 
 let dollar = await updateDollar();
-
-// setInterval(async () => {
-//   dollar = await updateDollar();
-//   console.log(dollar);
-// }, 1000);
 
 export function convertDollar(oprice) {
   const price = (oprice * dollar);

@@ -112,50 +112,49 @@ export default function Layout({ children, section }) {
         //   });
         // });
 
-        // try {
-        //   if (navigator.serviceWorker) {
-        //     navigator.serviceWorker
-        //       .register('/sw.js', { scope: '/' })
-        //       .then((reg) => {
-        //         console.log('Registration succeeded. Scope is ' + reg.scope);
-        //       }).catch((error) => {
-        //         console.log('Registration failed with ' + error);
-        //       });
+        try {
+          if (navigator.serviceWorker) {
+            navigator.serviceWorker
+              .register('/sw.js', { scope: '/' })
+              .then((reg) => {
+                console.log('Registration succeeded. Scope is ' + reg.scope);
+              }).catch((error) => {
+                console.log('Registration failed with ' + error);
+              });
 
-        //     bs();
-        //   }
-        // } catch {}
+            bs();
+          }
+        } catch {}
 
-        // async function bs() {
-        //   if (!navigator.permissions) { return; }
+        async function bs() {
+          if (!navigator.permissions) { return; }
 
-        //   const registration = await navigator.serviceWorker.ready;
-        //   const status = await navigator.permissions.query({
-        //     name: 'periodic-background-sync',
-        //   });
-        //   if (status.state === 'granted') {
-        //     await registration.periodicSync.register('check-deals', {
-        //       // An interval of one day.
-        //       minInterval: 24 * 60 * 60 * 1000,
-        //     });
-        //   }
-        // }
+          const registration = await navigator.serviceWorker.ready;
+          const status = await navigator.permissions.query({
+            name: 'periodic-background-sync',
+          });
+          if (status.state === 'granted') {
+            await registration.periodicSync.register('check-deals', {
+              // An interval of one day.
+              minInterval: 24 * 60 * 60 * 1000,
+            });
+          }
+        }
       `}} />
 
       <script type="module" src={asset("/src/js/web-components.js")} />
-      {/* <script type="module" src={asset("/islands/island-main.js")} /> */}
 
-      {/* <script dangerouslySetInnerHTML={{ __html:`
-        window.addEventListener('appinstalled', (eve) => {
-          gtag('event', 'app_installed');
-        });
+      <script dangerouslySetInnerHTML={{ __html:`
+        // window.addEventListener('appinstalled', (eve) => {
+        //   gtag('event', 'app_installed');
+        // });
 
         window.addEventListener('load', () => {
-          document.querySelector('#search').addEventListener('submit', (eve) => {
-            gtag('event', 'search', {
-              search_term: eve.target.elements[0].value,
-            });
-          });
+          // document.querySelector('#search').addEventListener('submit', (eve) => {
+          //   gtag('event', 'search', {
+          //     search_term: eve.target.elements[0].value,
+          //   });
+          // });
 
           const io = new IntersectionObserver(
             async (entries) => {
@@ -173,7 +172,7 @@ export default function Layout({ children, section }) {
             .forEach(link => io.observe(link));
 
         });
-      `}} /> */}
+      `}} />
     </AppContext.Provider>
   );
 }

@@ -5,7 +5,6 @@ import GameList from '@/components/GameList.jsx';
 
 export default function GameListIsland({ section }) {
   const gamesCollection = useSignal(null);
-
   useEffect(async () => {
     const games = await fetch(getPsURL(section.type)).then(res => res.json());
     await yieldToMain(() => {

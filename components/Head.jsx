@@ -9,7 +9,7 @@ export default function Head() {
 
       <link rel="stylesheet" href={Fresh.asset("/src/styles.css")} />
 
-      <link rel="preconnect" href="https://ps-games-api.vercel.app" />
+      <link rel="preconnect" href="https://ps-games-api.fly.dev" />
       <link rel="preconnect" href="https://fonts.gstatic.com" />
 
       <link rel="preload" as="font" href="/src/assets/SST-Roman-latin.woff2" crossorigin="anonymous" />

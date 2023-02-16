@@ -1,6 +1,6 @@
 import GameListIsland from '@/islands/GameListIsland.jsx';
 
-export default function Section({ section }) {
+export default function SectionWithIsland({ section }) {
   return (
     <section>
       <h2>{section.icon}{section.title}</h2>
