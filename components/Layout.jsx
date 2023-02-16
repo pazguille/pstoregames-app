@@ -126,20 +126,22 @@ export default function Layout({ children, section }) {
           }
         } catch {}
 
-        async function bs() {
-          if (!navigator.permissions) { return; }
+        try {
+          async function bs() {
+            if (!navigator.permissions) { return; }
 
-          const registration = await navigator.serviceWorker.ready;
-          const status = await navigator.permissions.query({
-            name: 'periodic-background-sync',
-          });
-          if (status.state === 'granted') {
-            await registration.periodicSync.register('check-deals', {
-              // An interval of one day.
-              minInterval: 24 * 60 * 60 * 1000,
+            const registration = await navigator.serviceWorker.ready;
+            const status = await navigator.permissions.query({
+              name: 'periodic-background-sync',
             });
+            if (status.state === 'granted') {
+              await registration.periodicSync.register('check-deals', {
+                // An interval of one day.
+                minInterval: 24 * 60 * 60 * 1000,
+              });
+            }
           }
-        }
+        } catch {}
       `}} />
 
       <script type="module" src={asset("/src/js/web-components.js")} />
