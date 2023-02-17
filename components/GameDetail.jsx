@@ -9,7 +9,7 @@ export default function GameDetail({ game }) {
   const until = Math.ceil((Date.parse(new Date(game.price.ends)) - Date.parse(new Date())) / (24 * 3600 * 1000));
 
   return (
-    <article class="game-preview">
+    <article class="game-preview" style={{'--game-preview-url': `url(${img}?w=1160)`}}>
       <Video title={game.title} />
 
       <div>
