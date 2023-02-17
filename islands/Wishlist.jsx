@@ -35,6 +35,8 @@ export default function Wishlist() {
       if (data) {
         wishCollection.value = data;
       }
+    } else {
+      loading.value = false;
     }
   }, []);
 
