@@ -15,18 +15,13 @@ import { getDollar } from '../utils.js';
 
 export async function handler(req, ctx) {
   const accept = req.headers.get('accept');
-
-  // if (accept.includes('text/html')) {
-  //   getDollar();
-  // }
-
   const res = await ctx.next();
   if (accept) {
     if (accept.includes('image/*') || req.url.includes('.woff2')) {
       res.headers.set('Cache-Control', 'public, max-age=31536000, immutable');
 
     } else if (accept.includes('text/html')) {
-      getDollar();
+      // getDollar();
       res.headers.set('Cache-Control', 'public, max-age=0, must-revalidate')
     }
   }

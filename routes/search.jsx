@@ -15,17 +15,19 @@ export const handler = {
     const url = new URL(req.url);
     const q = url.searchParams.get('q');
     const games = await fetchSearchGames(q);
-    return ctx.render({ q, games });
+    const lcp = games[0].images.master.url + '?w=330';
+    return ctx.render({ q, games, lcp });
   },
 };
 
 export default function Search({ data }) {
-  const { q, games } = data;
+  const { q, games, lcp } = data;
 
   return (
     <Layout>
       <Head>
         <title>{`${q} | PStore`}</title>
+        <link rel="preload" as="image" href={lcp} fetchpriority="high" />
       </Head>
       <div class="results list page page-on">
         <div class="results-content page-content">

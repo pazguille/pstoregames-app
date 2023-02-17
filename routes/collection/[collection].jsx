@@ -8,17 +8,19 @@ export const handler = {
   async GET(req, ctx) {
     const { collection } = ctx.params;
     const games = await fetch(getPsURL(collection, 0)).then(res => res.json());
-    return ctx.render({ collection, games });
+    const lcp = games[0].images.master.url + '?w=330';
+    return ctx.render({ collection, games, lcp });
   },
 };
 
 export default function Collection({ data }) {
-  const { collection, games } = data;
+  const { collection, games, lcp } = data;
 
   return (
     <Layout>
       <Head>
         <title>{`${titles[collection]} | PStore`}</title>
+        <link rel="preload" as="image" href={lcp} fetchpriority="high" />
       </Head>
       <div class="collection list page page-on">
         <div class="collection-content page-content">

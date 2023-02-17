@@ -16,8 +16,8 @@ export default function GameDetail({ game }) {
         <div class="game-preview-info">
           <h3 class="game-title">{game.title}</h3>
 
-          {game.platforms ? <p class="game-by">{game.platforms.join(' | ')}</p> : null}
           {game.developer || game.publisher ? <p class="game-by">by {game.developer || game.publisher}</p> : null}
+          {game.platforms ? <p class="game-by">{game.platforms.join(' | ')}</p> : null}
 
           <WishToggle id={game.id} title={game.title} amount={game.price.amount} />
           <ShareButton title={game.title} />
