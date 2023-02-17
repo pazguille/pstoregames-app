@@ -1,19 +1,21 @@
 import GamePrice from '@/components/GamePrice.jsx';
+import ShareButton from '@/components/ShareButton.jsx';
 import WishToggle from '@/islands/WishToggle.jsx';
-import ShareButton from '@/islands/ShareButton.jsx';
 import Video from '@/islands/Video.jsx';
 import VideoPlaylist from '@/islands/VideoPlaylist.jsx';
 
 export default function GameDetail({ game }) {
   const img = game.images.gamehub_cover_art.url;
-
   const until = Math.ceil((Date.parse(new Date(game.price.ends)) - Date.parse(new Date())) / (24 * 3600 * 1000));
+
   return (
-    <article class="game-preview" style={{'--game-preview-url': `url(${img}?w=1160)`}}>
+    <article class="game-preview">
       <Video title={game.title} />
+
       <div>
         <div class="game-preview-info">
           <h3 class="game-title">{game.title}</h3>
+
           {game.platforms ? <p class="game-by">{game.platforms.join(' | ')}</p> : null}
           {game.developer || game.publisher ? <p class="game-by">by {game.developer || game.publisher}</p> : null}
 

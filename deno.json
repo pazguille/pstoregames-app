@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "start": "TZ=utc deno run -A --watch=static/,routes/ dev.ts"
+    "start": "TZ=utc deno run -A --watch=static/,routes/,componennts/,islands/,static/ dev.ts"
   },
   "importMap": "./import_map.json",
   "compilerOptions": {
