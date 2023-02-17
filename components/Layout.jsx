@@ -1,7 +1,5 @@
 import { createContext } from 'preact';
-import { asset } from '$fresh/runtime.ts';
-
-import Head from '@/components/Head.jsx';
+import { Head, asset } from '$fresh/runtime.ts';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import PageTransition from '@/islands/PageTransition.jsx';
@@ -13,9 +11,67 @@ export const AppContext = createContext({
 export default function Layout({ children, section }) {
   return (
     <AppContext.Provider value={{ section }}>
-      <Head />
+      <Head>
+        <meta charset="utf-8" />
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover" />
+
+        <link rel="stylesheet" href={asset("/src/styles.css")} />
+
+        <link rel="preconnect" href="https://ps-games-api.fly.dev" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link rel="preconnect" href="https://www.dolarsi.com" />
+
+        <link rel="preload" as="font" href="/src/assets/SST-Roman-latin.woff2" crossorigin="anonymous" />
+        <link rel="preload" as="font" href="https://fonts.gstatic.com/s/inter/v7/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7W0Q5nw.woff2" crossorigin="anonymous" />
+        <link rel="preload" as="fetch" href="https://www.dolarsi.com/api/api.php?type=valoresprincipales" crossorigin="anonymous" />
+
+        <link rel="modulepreload" href={asset("/src/js/web-components.js")} />
+
+        <title>PStore: La tienda argenta de PlayStation</title>
+
+        <link rel="shortcut icon" href={asset("/src/assets/favicon.png")} />
+        <link rel="apple-touch-icon" href={asset("/src/assets/favicon.png")} />
+
+        <meta name="apple-touch-fullscreen" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-title" content="PStore" />
+        <meta name="theme-color" content="#000F2A" />
+        <link rel="apple-touch-startup-image" href="./src/assets/apple-splash-2048-2732.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+        <link rel="apple-touch-startup-image" href="./src/assets/apple-splash-1668-2388.jpg" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+        <link rel="apple-touch-startup-image" href="./src/assets/apple-splash-1536-2048.jpg" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+        <link rel="apple-touch-startup-image" href="./src/assets/apple-splash-1668-2224.jpg" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+        <link rel="apple-touch-startup-image" href="./src/assets/apple-splash-1620-2160.jpg" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+        <link rel="apple-touch-startup-image" href="./src/assets/apple-splash-1290-2796.jpg" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+        <link rel="apple-touch-startup-image" href="./src/assets/apple-splash-1179-2556.jpg" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+        <link rel="apple-touch-startup-image" href="./src/assets/apple-splash-1284-2778.jpg" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+        <link rel="apple-touch-startup-image" href="./src/assets/apple-splash-1170-2532.jpg" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+        <link rel="apple-touch-startup-image" href="./src/assets/apple-splash-1125-2436.jpg" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+        <link rel="apple-touch-startup-image" href="./src/assets/apple-splash-1242-2688.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+        <link rel="apple-touch-startup-image" href="./src/assets/apple-splash-828-1792.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+        <link rel="apple-touch-startup-image" href="./src/assets/apple-splash-1242-2208.jpg" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+        <link rel="apple-touch-startup-image" href="./src/assets/apple-splash-750-1334.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+        <link rel="apple-touch-startup-image" href="./src/assets/apple-splash-640-1136.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+
+        <meta name="description" content="Explora la amplia colección de títulos de videojuegos en el catálogo de juegos de PlayStation. Busca los éxitos de taquilla favoritos, las ofertas y nuevos lanzamientos en precios argentinos." />
+        <meta name="keywords" content="PlayStation, PlayStation4, PlayStation 5, ofertas en playstation, próximos juegos de PlayStation, nuevos juegos en PlayStation, nuevos juegos, videojuegos, catálogo de juegos de PlayStation, próximos juegos de PlayStation, nuevos juegos en PlayStation, nuevos juegos, videojuegos" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://pstoregames.deno.dev" />
+        <meta property="og:title" content="PStore: La tienda argenta de PlayStation" />
+        <meta property="og:description" content="Explora la amplia colección de títulos de videojuegos en el catálogo de juegos de PlayStation. Busca los éxitos de taquilla favoritos, las ofertas y nuevos lanzamientos en precios argentinos." />
+        <meta property="og:image" content="https://pstoregames.deno.dev/src/assets/pstore-og.jpg" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="pstoregames.deno.dev" />
+        <meta property="twitter:url" content="https://pstoregames.deno.dev" />
+        <meta name="twitter:title" content="PStore: La tienda argenta de PlayStation" />
+        <meta name="twitter:description" content="Explora la amplia colección de títulos de videojuegos en el catálogo de juegos de PlayStation. Busca los éxitos de taquilla favoritos, las ofertas y nuevos lanzamientos en precios argentinos." />
+        <meta name="twitter:image" content="https://pstoregames.deno.dev/src/assets/pstore-og.jpg" />
+
+        <link rel="manifest" href={asset("/manifest.json")} />
+      </Head>
       <Header />
-      {/* <PageTransition /> */}
       <main>
         {/* <div class="splash-loading" hidden>
           <svg width="100px" height="100px" viewbox="-20 0 150 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -43,6 +99,7 @@ export default function Layout({ children, section }) {
           });
         `}} /> */}
         {children}
+        <PageTransition />
       </main>
       <Footer />
 
@@ -73,10 +130,28 @@ export default function Layout({ children, section }) {
         m.parentNode.insertBefore(s,m);
       `}} /> */}
 
-      <script>
-
-      </script>
       <script dangerouslySetInnerHTML={{ __html:`
+        // async function updateDollar() {
+        //   return fetch('https://www.dolarsi.com/api/api.php?type=valoresprincipales')
+        //   .then(res => res.json())
+        //   .then(data => {
+        //     return parseFloat(data[0].casa.compra.replace(',', '.'));
+        //   });
+        // }
+
+        // const dollar = JSON.parse(window.localStorage.getItem('dollar'));
+        // if (!dollar || dollar.date !== new Date().toDateString()) {
+        //   await updateDollar();
+        // } else {
+        //   window.dollar = dollar.amount;
+        //   updateDollar().then(data => {
+        //     window.dollar = data;
+        //     window.localStorage.setItem('dollar', JSON.stringify({
+        //       amount: data, date: new Date().toDateString(),
+        //     }));
+        //   });
+        // }
+
         window.requestIdleCallback = window.requestIdleCallback || function (cb) {
           var start = Date.now();
           return setTimeout(function () {

@@ -12,7 +12,7 @@ export default function PageTransition() {
         $page.current.classList.add('page-on');
       });
 
-      window.addEventListener('pagehide', () => {
+      window.addEventListener('pageshow', () => {
         $page.current.toggleAttribute('hidden');
         requestIdleCallback(() => {
           $page.current.classList.remove('page-on');

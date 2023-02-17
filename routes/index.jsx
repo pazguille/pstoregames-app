@@ -1,6 +1,5 @@
-import { getPsURL } from '@/utils.js';
-import { Head } from '$fresh/runtime.ts';
-import { asset } from '$fresh/runtime.ts';
+import { getPsURL, titles } from '@/utils.js';
+import { Head, asset } from '$fresh/runtime.ts';
 import Layout from '@/components/Layout.jsx';
 import GameImportant from '@/components/GameImportant.jsx';
 import Section from '@/components/Section.jsx';
@@ -8,24 +7,23 @@ import SectionWithIsland from '@/components/SectionWithIsland.jsx';
 
 export const handler = {
   async GET(req, ctx) {
-
     const aboveTheFold = [
       {
         type: 'new',
-        title: 'Salidos del horno',
+        title: titles['new'],
         icon: '',
         list: [],
       },
       {
         type: 'deals',
-        title: 'Ahorrate unos mangos',
+        title: titles['deals'],
         icon: <img src="/src/assets/icons/tag.svg" width="24" height="24" />,
         list: [],
       },
 
       {
         type: 'coming',
-        title: '¡Mirá lo que se viene!',
+        title: titles['coming'],
         icon: '',
         list: [],
       },
@@ -34,43 +32,43 @@ export const handler = {
     const belowTheFold = [
       {
         type: 'best',
-        title: 'Deberías jugarlos',
-        icon: '',
-        list: [],
-      },
-      {
-        type: 'indies',
-        title: 'Los mejores indies',
+        title: titles['best'],
         icon: <img src="/src/assets/icons/chart.svg" width="24" height="24" />,
         list: [],
       },
       {
+        type: 'indies',
+        title: titles['indies'],
+        icon: '',
+        list: [],
+      },
+      {
         type: 'free',
-        title: 'Gratarola',
+        title: titles['free'],
         icon: '',
         list: [],
       },
       {
         type: 'vr',
-        title: 'PlayStation VR',
+        title: titles['vr'],
         icon: '',
         list: [],
       },
       {
         type: 'ps5',
-        title: 'PlayStation 5',
+        title: titles['ps5'],
         icon: '',
         list: [],
       },
       {
         type: 'ps4',
-        title: 'PlayStation 4',
+        title: titles['ps4'],
         icon: '',
         list: [],
       },
       {
         type: 'demos',
-        title: 'Demos',
+        title: titles['demos'],
         icon: '',
         list: [],
       },
@@ -107,7 +105,6 @@ export default function Home(ctx) {
         <link rel="preload" as="fetch" href="https://ps-games-api.fly.dev/api/games?list=ps5&skipitems=0" crossorigin="anonymous" />
         <link rel="preload" as="fetch" href="https://ps-games-api.fly.dev/api/games?list=ps4&skipitems=0" crossorigin="anonymous" />
         <link rel="preload" as="fetch" href="https://ps-games-api.fly.dev/api/games?list=demos&skipitems=0" crossorigin="anonymous" />
-        <link rel="preload" as="fetch" href="https://www.dolarsi.com/api/api.php?type=valoresprincipales" crossorigin="anonymous" />
       </Head>
       <div className="home">
         <notification-prompt hidden></notification-prompt>

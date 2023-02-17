@@ -1,10 +1,42 @@
 import { convertDollar } from '@/utils.js';
 
-export default function GamePrice({ game }) {
-  // if (!game.sold_separately) {
-  //   return null;
-  // }
+const formatter = new Intl.NumberFormat('es-AR', {
+  style: 'currency',
+  currency: 'ARS',
+});
 
+function StrikeTemplate({ amount, txt }) {
+  return (
+    <>
+      <span class="visually-hidden">Precio anterior: {txt}</span>
+      <s aria-hidden="true" class="amount">{amount}</s>
+    </>
+  );
+}
+
+function AmountTemplate({ amount, txt }) {
+  return (
+    <>
+      <span class="visually-hidden">{txt}</span>
+      <span aria-hidden="true" class="amount">{amount}</span>
+    </>
+  );
+}
+
+function Price({ amount, strike }) {
+  const amo = amount.split('.')[0].replace(/\,|\$/gi, '');
+  const fraction = amo.split('.')[1];
+  const txt = `${amo} pesos con ${fraction} centavos`;
+  const a = formatter.format(amo);
+
+  return (
+    <span class="price">
+      {strike ? <StrikeTemplate amount={a} txt={txt} /> : <AmountTemplate amount={a} txt={txt} />}
+    </span>
+  );
+}
+
+export default function GamePrice({ game }) {
   if (!game.price) {
     return null;
   }
@@ -13,11 +45,11 @@ export default function GamePrice({ game }) {
     <div class="game-price">
       {game.price.off ? <span class="game-price-off">{game.price.off}% OFF</span> : null}
       {game.price.off ? <div class="game-price-prev">
-        <x-price amount={convertDollar(game.price.amount)} strike></x-price>
+        <Price amount={convertDollar(game.price.amount)} strike />
       </div> : null}
       <span class="game-price-amount">
         {(game.price.deal || game.price.amount) ?
-          <x-price amount={convertDollar(game.price.deal || game.price.amount)}></x-price>
+          <Price amount={convertDollar(game.price.deal || game.price.amount)} />
           : game.demo ? 'Demo' : 'Gratis'
         }
       </span>
@@ -25,7 +57,6 @@ export default function GamePrice({ game }) {
         <small class="game-price-taxes">*impuestos incluídos</small>
         : null
       }
-      {game.gold_deal ? <div>Precio Gold: <x-price amount={convertDollar(game.price.gold_deal)}></x-price></div> : null}
     </div>
   );
 }

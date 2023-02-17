@@ -57,21 +57,17 @@ function toFixed(num) {
   return d ? r / m : r;
 }
 
-
 export const titles = {
   new : 'Salidos del horno',
   deals: 'Ahorrate unos mangos',
   coming: '¡Mirá lo que se viene!',
   best: 'Deberías jugarlos',
-  most: 'Los más jugados',
+  indies: 'Los mejores indies',
   free: 'Gratarola',
-  'gamepass-new': 'Recién agregados a Game Pass',
-  'gamepass-coming': 'Se están por sumar a Game Pass',
-  'leaving': 'Se van pronto de Game Pass',
-  'gamepass-all': 'Todos los juegos de Game Pass',
-  'gold-new': 'Disponibles con Gold',
-  'gold-deals': 'Ofertas con Gold',
-  'gold-free': 'Días gratis con Gold',
+  vr: 'PlayStation VR',
+  ps5: 'PlayStation 5',
+  ps4: 'PlayStation 4',
+  demos: 'Las mejores demos',
 };
 
 import { signal } from '@preact/signals';
