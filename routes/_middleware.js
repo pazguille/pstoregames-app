@@ -21,7 +21,7 @@ export async function handler(req, ctx) {
       res.headers.set('Cache-Control', 'public, max-age=31536000, immutable');
 
     } else if (accept.includes('text/html')) {
-      // getDollar();
+      getDollar();
       res.headers.set('Cache-Control', 'public, max-age=0, must-revalidate')
     }
   }
