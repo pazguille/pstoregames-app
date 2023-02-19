@@ -1,17 +1,4 @@
-// import { cache } from '../builder.js';
-// if (req.url.includes('/islands/')) {
-//   const path = new URL(req.url).pathname;
-//   const content = cache.get(path);
-//   return new Response(content, {
-//     headers: {
-//       'content-type': 'application/javascript; charset=utf-8',
-//       'Cache-Control': 'public, max-age=31536000, immutable'
-//     },
-//   });
-
-// }
-
-import { getDollar } from '../utils.js';
+import { getDollar, dollar } from '../utils.js';
 
 export async function handler(req, ctx) {
   const accept = req.headers.get('accept');

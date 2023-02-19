@@ -1,10 +1,5 @@
 import { convertDollar } from '@/utils.js';
 
-const formatter = new Intl.NumberFormat('es-AR', {
-  style: 'currency',
-  currency: 'ARS',
-});
-
 function StrikeTemplate({ amount, txt }) {
   return (
     <>
@@ -23,7 +18,14 @@ function AmountTemplate({ amount, txt }) {
   );
 }
 
+
+
 function Price({ amount, strike }) {
+  const formatter = new Intl.NumberFormat('es-AR', {
+    style: 'currency',
+    currency: 'ARS',
+  });
+
   const amo = amount.split('.')[0].replace(/\,|\$/gi, '');
   const fraction = amo.split('.')[1];
   const txt = `${amo} pesos con ${fraction} centavos`;
