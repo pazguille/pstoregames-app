@@ -1,5 +1,6 @@
 import { createContext } from 'preact';
 import { Head, asset } from '$fresh/runtime.ts';
+import { dollar } from '@/utils.js';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import PageTransition from '@/islands/PageTransition.jsx';
@@ -131,26 +132,7 @@ export default function Layout({ children, section }) {
       `}} /> */}
 
       <script dangerouslySetInnerHTML={{ __html:`
-        // async function updateDollar() {
-        //   return fetch('https://www.dolarsi.com/api/api.php?type=valoresprincipales')
-        //   .then(res => res.json())
-        //   .then(data => {
-        //     return parseFloat(data[0].casa.compra.replace(',', '.'));
-        //   });
-        // }
-
-        // const dollar = JSON.parse(window.localStorage.getItem('dollar'));
-        // if (!dollar || dollar.date !== new Date().toDateString()) {
-        //   await updateDollar();
-        // } else {
-        //   window.dollar = dollar.amount;
-        //   updateDollar().then(data => {
-        //     window.dollar = data;
-        //     window.localStorage.setItem('dollar', JSON.stringify({
-        //       amount: data, date: new Date().toDateString(),
-        //     }));
-        //   });
-        // }
+        window.dollar = ${dollar};
 
         window.requestIdleCallback = window.requestIdleCallback || function (cb) {
           var start = Date.now();
@@ -185,34 +167,42 @@ export default function Layout({ children, section }) {
         //   });
         // });
 
-        try {
-          if (navigator.serviceWorker) {
-            navigator.serviceWorker
-              .register('/sw.js', { scope: '/' })
-              .then((reg) => {
-                console.log('Registration succeeded. Scope is ' + reg.scope);
-              }).catch((error) => {
-                console.log('Registration failed with ' + error);
-              });
+        // navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        //   for (let registration of registrations) {
+        //     if (registration.active.scriptURL.includes('/sw.js')) {
+        //       registration.unregister();
+        //     }
+        //   }
+        // });
 
-            bs();
-          }
-        } catch {}
+        // try {
+        //   if (navigator.serviceWorker) {
+        //     navigator.serviceWorker
+        //       .register('/sw.js', { scope: '/' })
+        //       .then((reg) => {
+        //         console.log('Registration succeeded. Scope is ' + reg.scope);
+        //       }).catch((error) => {
+        //         console.log('Registration failed with ' + error);
+        //       });
 
-        async function bs() {
-          if (!navigator.permissions) { return; }
+        //     bs();
+        //   }
+        // } catch {}
 
-          const registration = await navigator.serviceWorker.ready;
-          const status = await navigator.permissions.query({
-            name: 'periodic-background-sync',
-          });
-          if (status.state === 'granted') {
-            await registration.periodicSync.register('check-deals', {
-              // An interval of one day.
-              minInterval: 24 * 60 * 60 * 1000,
-            });
-          }
-        }
+        // async function bs() {
+        //   if (!navigator.permissions) { return; }
+
+        //   const registration = await navigator.serviceWorker.ready;
+        //   const status = await navigator.permissions.query({
+        //     name: 'periodic-background-sync',
+        //   });
+        //   if (status.state === 'granted') {
+        //     await registration.periodicSync.register('check-deals', {
+        //       // An interval of one day.
+        //       minInterval: 24 * 60 * 60 * 1000,
+        //     });
+        //   }
+        // }
       `}} />
 
       <script type="module" src={asset("/src/js/web-components.js")} />

@@ -38,10 +38,10 @@ const IIBB = 0.02;
 const AFIP = 0.45;
 const PAISA = 0.08;
 
-let dollar = await updateDollar();
+export let dollar = await updateDollar();
 
 export function convertDollar(oprice) {
-  const price = (oprice * dollar);
+  const price = (oprice * (dollar || window.dollar));
   const final = toFixed(price) + toFixed(price * IVA) + toFixed(price * IIBB) + toFixed(price * AFIP) + toFixed(price * PAISA);
   return final.toFixed(2);
 }

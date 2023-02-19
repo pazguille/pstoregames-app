@@ -1,4 +1,3 @@
-import { IS_BROWSER } from "$fresh/runtime.ts";
 import { getPsURL } from '@/utils.js';
 import { useEffect, useRef } from 'preact/hooks';
 import { useSignal } from '@preact/signals';
@@ -10,7 +9,7 @@ export default function CollectionList({ type, games }) {
   const gamesCollection = useSignal(games);
   const skip = useSignal(LIMIT);
 
-  if (IS_BROWSER) {
+  if (typeof window.document !== 'undefined') {
     const io = new IntersectionObserver(async (entries) => {
       const first = entries[0];
       if (first.isIntersecting) {
