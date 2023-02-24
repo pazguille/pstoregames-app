@@ -36,7 +36,7 @@ export default function Detail({ data }) {
         </div>
       </div>
 
-      {/* <script dangerouslySetInnerHTML={{ __html:`
+      <script dangerouslySetInnerHTML={{ __html:`
         window.addEventListener('load', () => {
           document.querySelector('.detail-content').addEventListener('click', (eve) => {
             if (eve.target.classList.contains('game-buy-now')) {
@@ -60,7 +60,7 @@ export default function Detail({ data }) {
             }
           });
         });
-      `}} /> */}
+      `}} />
     </Layout>
   )
 }
