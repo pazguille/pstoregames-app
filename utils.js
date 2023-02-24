@@ -64,6 +64,7 @@ export const titles = {
   best: 'Deberías jugarlos',
   indies: 'Los mejores indies',
   free: 'Gratarola',
+  vr2: 'PlayStation VR2',
   vr: 'PlayStation VR',
   ps5: 'PlayStation 5',
   ps4: 'PlayStation 4',

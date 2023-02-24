@@ -49,6 +49,12 @@ export const handler = {
         list: [],
       },
       {
+        type: 'vr2',
+        title: titles['vr2'],
+        icon: '',
+        list: [],
+      },
+      {
         type: 'vr',
         title: titles['vr'],
         icon: '',
