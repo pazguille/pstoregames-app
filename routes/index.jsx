@@ -104,13 +104,13 @@ export default function Home(ctx) {
       <Head>
         <link rel="preload" as="image" href={lcp} fetchpriority="high" />
 
-        <link rel="preload" as="fetch" href="https://ps-games-api.fly.dev/api/games?list=best&skipitems=0" crossorigin="anonymous" />
-        <link rel="preload" as="fetch" href="https://ps-games-api.fly.dev/api/games?list=indies&skipitems=0" crossorigin="anonymous" />
-        <link rel="preload" as="fetch" href="https://ps-games-api.fly.dev/api/games?list=free&skipitems=0" crossorigin="anonymous" />
-        <link rel="preload" as="fetch" href="https://ps-games-api.fly.dev/api/games?list=vr&skipitems=0" crossorigin="anonymous" />
-        <link rel="preload" as="fetch" href="https://ps-games-api.fly.dev/api/games?list=ps5&skipitems=0" crossorigin="anonymous" />
-        <link rel="preload" as="fetch" href="https://ps-games-api.fly.dev/api/games?list=ps4&skipitems=0" crossorigin="anonymous" />
-        <link rel="preload" as="fetch" href="https://ps-games-api.fly.dev/api/games?list=demos&skipitems=0" crossorigin="anonymous" />
+        <link rel="preload" as="fetch" href="https://ps-games-api.deno.dev/api/games?list=best&skipitems=0" crossorigin="anonymous" />
+        <link rel="preload" as="fetch" href="https://ps-games-api.deno.dev/api/games?list=indies&skipitems=0" crossorigin="anonymous" />
+        <link rel="preload" as="fetch" href="https://ps-games-api.deno.dev/api/games?list=free&skipitems=0" crossorigin="anonymous" />
+        <link rel="preload" as="fetch" href="https://ps-games-api.deno.dev/api/games?list=vr&skipitems=0" crossorigin="anonymous" />
+        <link rel="preload" as="fetch" href="https://ps-games-api.deno.dev/api/games?list=ps5&skipitems=0" crossorigin="anonymous" />
+        <link rel="preload" as="fetch" href="https://ps-games-api.deno.dev/api/games?list=ps4&skipitems=0" crossorigin="anonymous" />
+        <link rel="preload" as="fetch" href="https://ps-games-api.deno.dev/api/games?list=demos&skipitems=0" crossorigin="anonymous" />
       </Head>
       <div className="home">
         <notification-prompt hidden></notification-prompt>
