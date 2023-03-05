@@ -1,4 +1,4 @@
-const API_URI = 'https://ps-games-api.fly.dev';
+const API_URI = 'https://ps-games-api.deno.dev';
 // const API_URI = 'http://localhost:3031';
 
 export const getPsURL = (list, skipitems = 0) => `${API_URI}/api/games?list=${list}&skipitems=${skipitems}`;

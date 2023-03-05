@@ -19,7 +19,8 @@ export default function Layout({ children, section }) {
 
         <link rel="stylesheet" href={asset("/src/styles.css")} />
 
-        <link rel="preconnect" href="https://ps-games-api.fly.dev" />
+        <link rel="preconnect" href="https://ps-games-api.deno.dev" />
+        <link rel="preconnect" href="https://image.api.playstation.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link rel="preconnect" href="https://www.dolarsi.com" />
 

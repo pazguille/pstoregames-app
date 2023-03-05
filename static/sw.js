@@ -64,7 +64,7 @@ this.addEventListener('notificationclick', eve => {
   );
 });
 
-const gamePsURL = (id) => `https://ps-games-api.fly.dev/api/games?id=${id}`;
+const gamePsURL = (id) => `https://ps-games-api.deno.dev/api/games?id=${id}`;
 function slugify(str) {
   return str
     .toString()
